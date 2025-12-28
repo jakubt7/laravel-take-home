@@ -3,7 +3,7 @@ import axios from "axios";
 import { Head } from "@inertiajs/react";
 
 export default function Remix() {
-    const MAX_CHARS = 240;
+    const MAX_CHARS = 280;
 
     const [text, setText] = useState("");
     const [variants, setVariants] = useState([]);
@@ -109,7 +109,7 @@ export default function Remix() {
                                         key={i}
                                         className="bg-gray-50 border border-gray-200 rounded-xl p-5 relative group"
                                     >
-                                        <div className="text-gray-800 leading-relaxed whitespace-pre-wrap">
+                                        <div className="text-gray-800 leading-relaxed whitespace-pre-wrap break-words break-all">
                                             {v}
                                         </div>
                                         <button

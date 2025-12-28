@@ -15,13 +15,33 @@ class RemixService
      */
     public function variants(string $text): array
     {
-        // TODO (candidate): implement
-        // Suggested approach:
-        // - Define a few interesting prefixes (e.g. "Quick tip:", "Hot take:")
-        // - Define a few call-to-action suffixes (e.g. "Try this today.")
-        // - Combine them with the original text
-        // - Ensure the resulting string is <= 280 chars
+        $prefixes = [
+            'Quick tip:',
+            'Hot take:',
+            'This might surprise you:',
+            'Friendly reminder:',
+        ];
 
-        return [$text, $text, $text, $text];
+        $suffixes = [
+            'Try this today.',
+            'What is your opinion about it? Comment below.',
+            "You can't miss it!",
+            'For more information head to the link in the bio!',
+        ];
+
+        $variants = [];
+        $text = trim($text);
+
+        for ($i = 0; $i < 4; $i++) {
+            $variant = $prefixes[$i] . ' ' . $text . ' ' . $suffixes[$i];
+
+            if (mb_strlen($variant) > 280) {
+                $variant = mb_substr($variant, 0, 280);
+            }
+
+            $variants[] = $variant;
+        }
+
+        return $variants;
     }
 }
